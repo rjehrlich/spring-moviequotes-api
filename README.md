@@ -30,7 +30,7 @@ Text Here
 
 ---
 ## ERD Diagram
-
+![](/images/DB_ER_diagram.png)
 
 ---
 ## 

@@ -29,11 +29,15 @@ Text Here
 ### Technical Requirements
 
 ---
-## ERD Diagram
+## Project Planning Process
+
+### ERD Diagram
 ![](/images/DB_ER_diagram.png)
 
+### Kanban/ Agile Planning
+![](/images/agile_project_plan.png)
+
 ---
-## 
 
 **What I would do differently**:
 ---

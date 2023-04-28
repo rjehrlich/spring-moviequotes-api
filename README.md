@@ -34,7 +34,7 @@ Text Here
 ### ERD Diagram
 ![](/images/DB_ER_diagram.png)
 
-### Kanban/ Agile Planning
+### Kanban/ Agile Approach
 ![](/images/agile_project_plan.png)
 
 ---

@@ -1,5 +1,6 @@
 package com.moviequote.project.controller;
 
+import com.moviequote.project.exception.InformationExistException;
 import com.moviequote.project.exception.InformationNotFoundException;
 import com.moviequote.project.model.Movie;
 import com.moviequote.project.repository.MovieRepository;
@@ -21,7 +22,10 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
-    // http://localhost:9893/api/movies/
+    /**
+     * find all movies via the endpoint http://localhost:9893/api/movies/ &
+     * @return them in a list
+     */
     @GetMapping(path = "/movies/")
     public List<Movie> getMovies() {
         return movieRepository.findAll();
@@ -40,14 +44,27 @@ public class MovieController {
 
     // http://localhost:9893/api/movies/
     @PostMapping(path = "/movies/")
-    public String createMovie(@RequestBody String body) {
-        return "Creating a movie " + body;
+    public Movie createMovie(@RequestBody Movie movieObject) {
+       Movie movie = movieRepository.findByTitle(movieObject.getTitle());
+       if (movie != null) {
+           throw new InformationExistException("movie with title " + movie.getTitle() + " already exists");
+       } else {
+           return movieRepository.save(movieObject);
+       }
     }
 
     // http://localhost:9893/api/movies/1
     @PutMapping(path = "/movies/{movieId}")
-    public String updateMovie(@PathVariable Long movieId, @RequestBody String body) {
-        return "updating the movie with the id of " + movieId + " with this info " + body;
+    public Movie updateMovie(@PathVariable Long movieId, @RequestBody Movie movieObject) {
+        Optional<Movie> movie = getMovie(movieId);
+        if (movieObject.getTitle().equals(movie.get().getTitle())) {
+            throw new InformationExistException("Movie " + movie.get().getTitle() + " already exists");
+        } else {
+            Optional<Movie> updateMovie = movieRepository.findById(movieId);
+            updateMovie.get().setTitle(movieObject.getTitle());
+            updateMovie.get().setGenre(movieObject.getGenre());
+            return movieRepository.save(updateMovie);
+        }
     }
 
     // http://localhost:9893/api/movies/1

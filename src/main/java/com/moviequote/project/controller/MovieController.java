@@ -1,21 +1,41 @@
 package com.moviequote.project.controller;
 
+import com.moviequote.project.exception.InformationNotFoundException;
+import com.moviequote.project.model.Movie;
+import com.moviequote.project.repository.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
 @RequestMapping(path = "/api") // http://localhost:9893/api
 public class MovieController {
+
+    private MovieRepository movieRepository;
+
+    @Autowired
+    public void setMovieRepository(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
+
     // http://localhost:9893/api/movies/
     @GetMapping(path = "/movies/")
-    public String getMovies() {
-        return "get all movies";
+    public List<Movie> getMovies() {
+        return movieRepository.findAll();
     }
 
     // http://localhost:9893/api/movies/1
     @GetMapping(path = "/movies/{movieId}")
-    public String getMovie(@PathVariable Long movieId) {
-        return "getting the movie with the id of " + movieId;
+    public Optional<Movie> getMovie(@PathVariable Long movieId) {
+        Optional<Movie> movie = movieRepository.findById(movieId);
+        if (movie.isPresent()) {
+            return movie;
+        } else {
+            throw new InformationNotFoundException("movie with the id of " + movieId + " not found");
+        }
     }
 
     // http://localhost:9893/api/movies/

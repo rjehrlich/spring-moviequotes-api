@@ -16,6 +16,12 @@ public class Quote {
     @Column
     private String quote_text;
 
+    // many quotes belong to one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
     // many quotes can belong to one movie
     @JsonIgnore
     @ManyToOne
@@ -55,5 +61,15 @@ public class Quote {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    /********** user getters and setters **********/
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -81,6 +81,11 @@ public class MovieService {
     // Movie Quote services - business logic
         // get called by corresponding controller classes
 
+    /**
+     * Given our movie model has a getQuote list method, we can take the:
+     * @param movieId , passed to the getMovie method, and
+     * @return all quotes for that given movieId
+     */
     public List<Quote> getMovieQuotes(Long movieId) {
         // call the getMovie method for error handling
         return getMovie(movieId).get().getQuoteList();
@@ -100,9 +105,21 @@ public class MovieService {
         }
     }
 
-
+    /**
+     * Creates a new movie quote given the two, if they exist:
+     * @param movieId
+     * @param quoteObject
+     * @return them/ saves to the db & associating the two together
+     */
     public Quote createMovieQuote(Long movieId, Quote quoteObject) {
-        return ;
+        // first check if the movieId exists
+        try {
+            Optional<Movie> movie = movieRepository.findById(movieId);
+            quoteObject.setMovie(movie.get());
+            return quoteRepository.save(quoteObject);
+        } catch (NoSuchElementException e) {
+            throw new InformationNotFoundException("movie with id " + movieId + " not found.");
+        }
     }
 
 

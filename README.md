@@ -24,7 +24,10 @@ Text Here
 ## 
 
 ### User Stories
-- [x] Text Here
+- [x] As a User, I want to be able to create an account, so I can have a user profile.
+- [x] As a User, I want to have a list of many movies in my account.
+- [x] As a User, I want to add many Movies so that I can have many notable quotes.
+- [x] As a User, I want certain information accessible only to me.
 
 ### Technical Requirements
 

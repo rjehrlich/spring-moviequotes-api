@@ -60,16 +60,23 @@ public class MovieController {
         if (movieObject.getTitle().equals(movie.get().getTitle())) {
             throw new InformationExistException("Movie " + movie.get().getTitle() + " already exists");
         } else {
-            Optional<Movie> updateMovie = movieRepository.findById(movieId);
-            updateMovie.get().setTitle(movieObject.getTitle());
-            updateMovie.get().setGenre(movieObject.getGenre());
+            Movie updateMovie = movieRepository.findById(movieId).get();
+            updateMovie.setTitle(movieObject.getTitle());
+            updateMovie.setGenre(movieObject.getGenre());
             return movieRepository.save(updateMovie);
         }
     }
 
     // http://localhost:9893/api/movies/1
     @DeleteMapping(path = "/movies/{movieId}")
-    public String deleteMovie(@PathVariable String movieId) {
-        return "deleting the movie that has the id of " + movieId;
+    public Optional<Movie> deleteMovie(@PathVariable Long movieId) {
+        Optional<Movie> movie = movieRepository.findById(movieId);
+        if (movie.isPresent()) {
+            movieRepository.deleteById(movieId);
+            return movie;
+        } else {
+            throw new InformationNotFoundException("movie with id " + movieId + " not found");
+        }
     }
+
 }

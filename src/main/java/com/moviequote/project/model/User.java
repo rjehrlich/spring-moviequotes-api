@@ -92,4 +92,28 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public List<Movie> getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+    }
+
+    public List<Quote> getQuoteList() {
+        return quoteList;
+    }
+
+    public void setQuoteList(List<Quote> quoteList) {
+        this.quoteList = quoteList;
+    }
 }

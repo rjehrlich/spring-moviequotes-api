@@ -95,17 +95,17 @@ public class MovieService {
     }
 
 
-    public Quote createMovieQuote(@PathVariable Long movieId, @RequestBody Quote quoteObject) {
+    public Quote createMovieQuote(Long movieId, Quote quoteObject) {
         return ;
     }
 
 
-    public Quote updateMovieQuote(@PathVariable Long movieId, @PathVariable Long quoteId, @RequestBody Quote quoteObject) {
+    public Quote updateMovieQuote(Long movieId, Long quoteId, Quote quoteObject) {
         return ;
     }
 
 
-    public ResponseEntity<HashMap<String, String>> deleteMovieQuote(@PathVariable Long movieId, @PathVariable Long quoteId) {
+    public ResponseEntity<HashMap<String, String>> deleteMovieQuote(Long movieId, Long quoteId) {
         return ;
     }
 }

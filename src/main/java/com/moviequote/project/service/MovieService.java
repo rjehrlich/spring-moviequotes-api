@@ -137,7 +137,7 @@ public class MovieService {
 
 
     public Quote deleteMovieQuote(Long movieId, Long quoteId) {
-       Quote quote = getMovieQuote(Long movieId, Long quoteId);
+       Quote quote = getMovieQuote(movieId, quoteId);
        quoteRepository.delete(quote);
        return quote;
     }

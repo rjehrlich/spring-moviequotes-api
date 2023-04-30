@@ -5,10 +5,10 @@ import com.moviequote.project.exception.InformationNotFoundException;
 import com.moviequote.project.model.Movie;
 import com.moviequote.project.model.Quote;
 import com.moviequote.project.repository.MovieRepository;
+import com.moviequote.project.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,10 +18,16 @@ import java.util.Optional;
 @Service
 public class MovieService {
     private MovieRepository movieRepository;
+    private QuoteRepository quoteRepository;
 
     @Autowired
     public void setMovieRepository(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
+    }
+
+    @Autowired
+    public void setQuoteRepository(QuoteRepository quoteRepository) {
+        this.quoteRepository = quoteRepository;
     }
 
     /**

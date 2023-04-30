@@ -36,6 +36,11 @@ public class User {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Movie> movieList;
 
+    // user can have more than one quote
+    @OneToMany(mappedBy = "user")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Quote> quoteList;
+
     public User() {
     }
 

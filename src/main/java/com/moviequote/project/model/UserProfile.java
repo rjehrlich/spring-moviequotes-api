@@ -1,9 +1,35 @@
 package com.moviequote.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "profiles")
 public class UserProfile {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String firstName;
+
+    @Column
     private String lastName;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "userProfile")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public UserProfile() {
     }

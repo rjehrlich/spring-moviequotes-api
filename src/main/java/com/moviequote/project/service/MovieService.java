@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -31,7 +32,7 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Optional<Movie> getMovie(@PathVariable Long movieId) {
+    public Optional<Movie> getMovie(Long movieId) {
         Optional<Movie> movie = movieRepository.findById(movieId);
         if (movie.isPresent()) {
             return movie;
@@ -40,7 +41,7 @@ public class MovieService {
         }
     }
 
-    public Movie createMovie(@RequestBody Movie movieObject) {
+    public Movie createMovie(Movie movieObject) {
         Movie movie = movieRepository.findByTitle(movieObject.getTitle());
         if (movie != null) {
             throw new InformationExistException("movie with title " + movie.getTitle() + " already exists");
@@ -49,7 +50,7 @@ public class MovieService {
         }
     }
 
-    public Movie updateMovie(@PathVariable Long movieId, @RequestBody Movie movieObject) {
+    public Movie updateMovie(Long movieId, Movie movieObject) {
         Optional<Movie> movie = getMovie(movieId);
         if (movieObject.getTitle().equals(movie.get().getTitle())) {
             throw new InformationExistException("Movie " + movie.get().getTitle() + " already exists");
@@ -61,7 +62,7 @@ public class MovieService {
         }
     }
 
-    public Optional<Movie> deleteMovie(@PathVariable Long movieId) {
+    public Optional<Movie> deleteMovie(Long movieId) {
         Optional<Movie> movie = movieRepository.findById(movieId);
         if (movie.isPresent()) {
             movieRepository.deleteById(movieId);
@@ -74,13 +75,23 @@ public class MovieService {
     // Movie Quote services - business logic
         // get called by corresponding controller classes
 
-    public List<Quote> getMovieQuotes(@PathVariable Long movieId) {
-        return ;
+    public List<Quote> getMovieQuotes(Long movieId) {
+        // call the getMovie method for error handling
+        return getMovie(movieId).get().getQuoteList();
     }
 
-
-    public Quote getMovieQuote(@PathVariable Long movieId, @PathVariable Long quoteId) {
-        return ;
+    /**
+     * Takes two variable params representing data being queried
+     * @param movieId
+     * @param quoteId
+     * @return the value of data from db if they exist. Otherwise, throws error for missing info
+     */
+    public Quote getMovieQuote(Long movieId, Long quoteId) {
+        try {
+            return getMovieQuotes(movieId).stream().filter(q -> q.getId().equals(quoteId)).findFirst().get();
+        } catch (NoSuchElementException e) {
+            throw new InformationNotFoundException("Quote with id " + quoteId + " not found.");
+        }
     }
 
 

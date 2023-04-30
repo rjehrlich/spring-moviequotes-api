@@ -7,7 +7,6 @@ import com.moviequote.project.model.Quote;
 import com.moviequote.project.repository.MovieRepository;
 import com.moviequote.project.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -137,7 +136,9 @@ public class MovieService {
     }
 
 
-    public ResponseEntity<HashMap<String, String>> deleteMovieQuote(Long movieId, Long quoteId) {
-        return ;
+    public Quote deleteMovieQuote(Long movieId, Long quoteId) {
+       Quote quote = getMovieQuote(Long movieId, Long quoteId);
+       quoteRepository.delete(quote);
+       return quote;
     }
 }

@@ -122,9 +122,18 @@ public class MovieService {
         }
     }
 
-
+    /**
+     * Update a movie quote with the following params/ data
+     * @param movieId
+     * @param quoteId
+     * @param quoteObject
+     * @return the data saved into the db using the quote repository save method if all data exists
+     */
     public Quote updateMovieQuote(Long movieId, Long quoteId, Quote quoteObject) {
-        return ;
+        Quote quote = getMovieQuote(movieId, quoteId);
+        quote.setMovie(quoteObject.getMovie());
+        quote.setQuote_text(quoteObject.getQuote_text());
+        return quoteRepository.save(quote);
     }
 
 

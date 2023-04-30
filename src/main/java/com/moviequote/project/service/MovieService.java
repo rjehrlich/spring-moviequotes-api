@@ -3,12 +3,14 @@ package com.moviequote.project.service;
 import com.moviequote.project.exception.InformationExistException;
 import com.moviequote.project.exception.InformationNotFoundException;
 import com.moviequote.project.model.Movie;
+import com.moviequote.project.model.Quote;
 import com.moviequote.project.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +25,7 @@ public class MovieService {
 
     /**
      * find all movies via the endpoint http://localhost:9893/api/movies/ &
-     * @return them in a list
+     * @return movies in a list
      */
     public List<Movie> getMovies() {
         return movieRepository.findAll();
@@ -67,5 +69,32 @@ public class MovieService {
         } else {
             throw new InformationNotFoundException("movie with id " + movieId + " not found");
         }
+    }
+
+    // Movie Quote services - business logic
+        // get called by corresponding controller classes
+
+    public List<Quote> getMovieQuotes(@PathVariable Long movieId) {
+        return ;
+    }
+
+
+    public Quote getMovieQuote(@PathVariable Long movieId, @PathVariable Long quoteId) {
+        return ;
+    }
+
+
+    public Quote createMovieQuote(@PathVariable Long movieId, @RequestBody Quote quoteObject) {
+        return ;
+    }
+
+
+    public Quote updateMovieQuote(@PathVariable Long movieId, @PathVariable Long quoteId, @RequestBody Quote quoteObject) {
+        return ;
+    }
+
+
+    public ResponseEntity<HashMap<String, String>> deleteMovieQuote(@PathVariable Long movieId, @PathVariable Long quoteId) {
+        return ;
     }
 }

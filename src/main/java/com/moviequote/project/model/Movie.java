@@ -1,6 +1,10 @@
 package com.moviequote.project.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -16,6 +20,12 @@ public class Movie {
 
     @Column
     private String genre;
+
+
+    // one movie can have many quotes
+    @OneToMany(mappedBy = "movie", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Quote> quoteList;
 
     public Movie() {
     }
@@ -57,5 +67,13 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", genre='" + genre + '\'' +
                 '}';
+    }
+
+    public List<Quote> getQuoteList() {
+        return quoteList;
+    }
+
+    public void setQuoteList(List<Quote> quoteList) {
+        this.quoteList = quoteList;
     }
 }

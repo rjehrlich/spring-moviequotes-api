@@ -1,5 +1,6 @@
 package com.moviequote.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -26,6 +27,12 @@ public class Movie {
     @OneToMany(mappedBy = "movie", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Quote> quoteList;
+
+    //many movies belong to one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
     public Movie() {
     }
@@ -69,11 +76,21 @@ public class Movie {
                 '}';
     }
 
+    /********** quote list getters and setters **********/
     public List<Quote> getQuoteList() {
         return quoteList;
     }
 
     public void setQuoteList(List<Quote> quoteList) {
         this.quoteList = quoteList;
+    }
+
+    /********** user getters and setters **********/
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

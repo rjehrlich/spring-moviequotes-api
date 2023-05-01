@@ -4,9 +4,12 @@ import com.moviequote.project.exception.InformationExistException;
 import com.moviequote.project.exception.InformationNotFoundException;
 import com.moviequote.project.model.Movie;
 import com.moviequote.project.model.Quote;
+import com.moviequote.project.model.User;
 import com.moviequote.project.repository.MovieRepository;
 import com.moviequote.project.repository.QuoteRepository;
+import com.moviequote.project.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,13 +22,15 @@ public class MovieService {
     private QuoteRepository quoteRepository;
 
     @Autowired
-    public void setMovieRepository(MovieRepository movieRepository) {
+    public MovieService(MovieRepository movieRepository, QuoteRepository quoteRepository) {
         this.movieRepository = movieRepository;
+        this.quoteRepository = quoteRepository;
     }
 
-    @Autowired
-    public void setQuoteRepository(QuoteRepository quoteRepository) {
-        this.quoteRepository = quoteRepository;
+    public static User getCurrentLoggedInUser() {
+        MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return userDetails.getUser();
     }
 
     /**
@@ -111,12 +116,14 @@ public class MovieService {
      */
     public Quote createMovieQuote(Long movieId, Quote quoteObject) {
         // first check if the movieId exists
-        try {
-            Optional<Movie> movie = movieRepository.findById(movieId);
-            quoteObject.setMovie(movie.get());
+        Optional<Movie> movie = getMovie(movieId);
+        Quote quote = quoteRepository.findByMovieId(movieId).stream()
+                .filter((q -> q.getMovie().equals(quoteObject.getMovie()))).findFirst().get();
+        if (quote != null) {
+            throw new InformationExistException("Quote with that movie already exists.");
+        } else {
+            quoteObject.setMovie(movie);
             return quoteRepository.save(quoteObject);
-        } catch (NoSuchElementException e) {
-            throw new InformationNotFoundException("movie with id " + movieId + " not found.");
         }
     }
 
@@ -129,7 +136,7 @@ public class MovieService {
      */
     public Quote updateMovieQuote(Long movieId, Long quoteId, Quote quoteObject) {
         Quote quote = getMovieQuote(movieId, quoteId);
-        quote.setMovie(quoteObject.getMovie());
+        quote.setMovie(Optional.ofNullable(quoteObject.getMovie()));
         quote.setQuote_text(quoteObject.getQuote_text());
         return quoteRepository.save(quote);
     }

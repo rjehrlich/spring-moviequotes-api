@@ -3,6 +3,7 @@ package com.moviequote.project.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "quotes")
@@ -59,7 +60,7 @@ public class Quote {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    public void setMovie(Optional<Movie> movie) {
         this.movie = movie;
     }
 

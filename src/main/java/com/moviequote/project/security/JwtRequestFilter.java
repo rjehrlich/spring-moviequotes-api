@@ -31,6 +31,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         return null;
     }
 
+    /**
+     * Get JWT from Authorization header (by removing Bearer prefix)
+     * @param request (if has JWT, validate it, parse username from it)
+     * @param response
+     * @param filterChain
+     * @throws ServletException
+     * @throws IOException
+     * finally sets UserDetails
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {

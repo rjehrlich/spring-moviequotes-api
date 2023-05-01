@@ -60,7 +60,7 @@ public class Quote {
         return movie;
     }
 
-    public void setMovie(Optional<Movie> movie) {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
 

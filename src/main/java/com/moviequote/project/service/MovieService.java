@@ -122,7 +122,7 @@ public class MovieService {
         if (quote != null) {
             throw new InformationExistException("Quote with that movie already exists.");
         } else {
-            quoteObject.setMovie(movie);
+            quoteObject.setMovie(movie.get());
             return quoteRepository.save(quoteObject);
         }
     }
@@ -136,7 +136,7 @@ public class MovieService {
      */
     public Quote updateMovieQuote(Long movieId, Long quoteId, Quote quoteObject) {
         Quote quote = getMovieQuote(movieId, quoteId);
-        quote.setMovie(Optional.ofNullable(quoteObject.getMovie()));
+        quote.setMovie((quoteObject.getMovie()));
         quote.setQuote_text(quoteObject.getQuote_text());
         return quoteRepository.save(quote);
     }

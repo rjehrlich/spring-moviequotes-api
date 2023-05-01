@@ -10,4 +10,5 @@ import java.util.List;
 public interface QuoteRepository extends JpaRepository<Quote, Long> {
     // get all quotes that belong to the movie
     List<Quote> findByMovieId(Long quoteId);
+
 }

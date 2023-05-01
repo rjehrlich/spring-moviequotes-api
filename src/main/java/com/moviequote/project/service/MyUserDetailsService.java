@@ -1,5 +1,6 @@
 package com.moviequote.project.service;
 
+import com.moviequote.project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +19,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        return null;
+        User user = userService.findUserByEmailAddress(email); // find user from db
+        return new MyUserDetails(user); // once we find user we need user details
     }
 }

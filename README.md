@@ -3,10 +3,10 @@
 ## Spring Boot Mini-Project
 * <a href="#project-description">Project Description</a>
 * <a href="#technologies-used">Technologies Used</a>
-* <a href="#project-planning-process"></a> Project Planning Process
-* <a href="#learnings-takeaways"></a> Learnings/ Takeaways
-* <a href="#installation-instructions"></a> Installation Instructions
-* <a href="#credits"></a> Credits
+* <a href="#project-planning-process">Project Planning Process</a>
+* <a href="#learnings-takeaways">Learnings/ Takeaways</a>
+* <a href="#installation-instructions">Installation Instructions</a>
+* <a href="#credits">Credits</a>
 
 ---
 ## Project Description
@@ -49,7 +49,7 @@ I highlight 3 key areas that I focused on when planning out the project:
 2. Kanban board to plan out all steps and project requirements need to successfully complete the project.
 3. Mapped out all REST API Endpoints to help understand functionality
 
-*I also wrote out all my User Stories to use as a reference throughout the project*
+*I also wrote out all User Stories for reference points throughout the project*
 
 ### ERD Diagram
 ![](/images/DB_ER_diagram.png)
@@ -60,19 +60,24 @@ I highlight 3 key areas that I focused on when planning out the project:
 ### Functionality/ REST API Endpoints
 
 #### Movie Controller
-| HTTP Methods | Full URL                           |    URL    |    Functionally    |
-|--------------|------------------------------------|:---------:|:------------------:|
-| GET          | http://localhost:9893/api/movies/  | /movies/  | Get All movies     |
-| GET          | http://localhost:9893/api/movies/1 | /movies/1 | Get Movie By Id    |
-| POST         | http://localhost:9893/api/movies/  | /movies/  | Create Movie       |
-| PUT          | http://localhost:9893/api/movies/1 | /movies/1 | Update Movie By Id |
-| DELETE       | http://localhost:9893/api/movies/1 | /movies/1 | Delete Movie By Id |
+| HTTP Methods 	| Full URL                                    	|                 URL                	|        Functionally        	|
+|--------------	|---------------------------------------------	|:----------------------------------:	|:--------------------------:	|
+| GET          	| http://localhost:9893/api/movies/           	| /movies/                           	| Get All movies             	|
+| GET          	| http://localhost:9893/api/movies/1          	| /movies/{movieId}                  	| Get Movie By Id            	|
+| POST         	| http://localhost:9893/api/movies/           	| /movies/                           	| Create Movie               	|
+| PUT          	| http://localhost:9893/api/movies/1          	| /movies/{movieId}                  	| Update Movie By Id         	|
+| DELETE       	| http://localhost:9893/api/movies/1          	| /movies/{movieId}                  	| Delete Movie By Id         	|
+| GET          	| http://localhost:9893/api/movies/1/quotes   	| /movies/{movieId}/quotes           	| Get all quotes by movie id 	|
+| GET          	| http://localhost:9893/api/movies/1/quotes/1 	| /movies/{movieId}/quotes/{quoteId} 	| Get quote by id            	|
+| POST         	| http://localhost:9893/api/movies/1/quotes   	| /movies/{movieId}/quotes           	| Create quote               	|
+| PUT          	| http://localhost:9893/api/movies/1/quotes/1 	| /movies/{movieId}/quotes/{quoteId} 	| Update quote by id         	|
+| DELETE       	| http://localhost:9893/api/movies/1/quotes/1 	| /movies/{movieId}/quotes/{quoteId} 	| Delete quote by id         	|
 
 #### User Controller
-| HTTP Methods | Full URL                                  |          URL         |   Functionally   |
-|--------------|-------------------------------------------|:--------------------:|:----------------:|
-| POST         | http://localhost:9893/auth/users/login    | /auth/users/login    | Logs user in     |
-| POST         | http://localhost:9893/auth/users/register | /auth/users/register | Registers a user |
+| HTTP Methods 	| Full URL                                  	|          URL         	|   Functionally   	|
+|--------------	|-------------------------------------------	|:--------------------:	|:----------------:	|
+| POST         	| http://localhost:9893/auth/users/login    	| /auth/users/login    	| Logs user in     	|
+| POST         	| http://localhost:9893/auth/users/register 	| /auth/users/register 	| Registers a user 	|
 
 
 [Endpoint Planning Doc](https://docs.google.com/spreadsheets/d/1TMQIOrHQxaXZtsJ4rmfsd5t8xElu4gvIv6P-eFgEU1k/edit?usp=sharing)
@@ -80,6 +85,7 @@ I highlight 3 key areas that I focused on when planning out the project:
 ---
 
 ## Learnings/ Takeaways
+
 
 ## Credits
 

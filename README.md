@@ -33,8 +33,10 @@ By using movies and their popular quotes, you can have fun querying and creating
 ## Technologies Used
 * **Java**
 * **IntelliJ IDEA** (with Java 17)
+* **Spring Boot** - version 2.7.8
 * **PostgreSQL database** - pgAdmin 4
 * **Postman** - testing DB requests
+* **Spring Initializr** 
 * **Maven Repository** - https://mvnrepository.com/
 * **ERD Tool** - https://www.lucidchart.com/
 * **Markdown Table Generator** - https://www.tablesgenerator.com/markdown_tables
@@ -86,6 +88,60 @@ I highlight 3 key areas that I focused on when planning out the project:
 
 ## Learnings/ Takeaways
 
+
+
+## Installation Instructions
+
+You will need to install the following dependencies in your pom.xml file in order to use this codebase:
+
+```
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <version>3.0.5</version>
+    </dependency>
+    
+<!-- Postgres driver, make connection between db -->
+    <dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+    </dependency>
+    
+<!-- Allows you to talk to any db using Java -->
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    
+<!-- Spring Boot Security -->    
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.11.5</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl -->
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>0.11.5</version>
+        <scope>runtime</scope>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>0.11.5</version>
+        <scope>runtime</scope>
+    </dependency> 
+```
 
 ## Credits
 

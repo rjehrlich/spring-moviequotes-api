@@ -36,7 +36,7 @@ By using movies and their popular quotes, you can have fun querying and creating
 * **Spring Boot** - version 2.7.8
 * **PostgreSQL database** - pgAdmin 4
 * **Postman** - testing DB requests
-* **Spring Initializr** 
+* **Spring Initializr** - https://start.spring.io/
 * **Maven Repository** - https://mvnrepository.com/
 * **ERD Tool** - https://www.lucidchart.com/
 * **Markdown Table Generator** - https://www.tablesgenerator.com/markdown_tables

@@ -1,6 +1,7 @@
-package com.moviequote.project.service;
+package com.moviequote.project.security;
 
 import com.moviequote.project.model.User;
+import com.moviequote.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

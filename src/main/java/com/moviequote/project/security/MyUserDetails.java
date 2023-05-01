@@ -1,4 +1,4 @@
-package com.moviequote.project.service;
+package com.moviequote.project.security;
 
 import com.moviequote.project.model.User;
 import org.springframework.security.core.GrantedAuthority;

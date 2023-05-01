@@ -1,7 +1,7 @@
 # Movie Quotes API
 
 ## Spring Boot Mini-Project
-* <a href="#"></a>
+* <a href="#project-description">Project Description</a>
 * <a href="#"></a>
 * <a href="#"></a>
 * <a href="#"></a>
@@ -9,9 +9,11 @@
 * <a href="#"></a>
 * <a href="#"></a>
 ---
-## 
+## Project Description
 
-Text Here
+This project aims to build a monolithic 
+backend using Spring Boot and its modules in order to create a web API. 
+By using movies and their popular quotes, you can have fun querying and creating all the movie quotes your heart desires.
 
 ##
 

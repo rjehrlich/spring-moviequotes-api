@@ -88,7 +88,13 @@ I highlight 3 key areas that I focused on when planning out the project:
 
 ## Learnings/ Takeaways
 
+This project really tested my understanding of the Three-tier Architecture. As I started to add more controllers, services, and 
+repositories, it became difficult for me to follow where/ how to call my methods.
 
+I also struggled with the security portion in understanding which layers I was restricting to public vs private for users.
+
+I'd like to be able to build on what I've already created here to be able to change endpoint access levels. Ideally I'd like to be able to also build out the DB for this 
+so that I can use this API in creating a trivia game of sorts.
 
 ## Installation Instructions
 
@@ -145,6 +151,8 @@ You will need to install the following dependencies in your pom.xml file in orde
 
 ## Credits
 
-* When I got stuck I referred back to Java Spring Boot Lesson for explanations: https://git.generalassemb.ly/sureshmelvinsigera/Java-Spring-Boot-lecture/tree/spring-2-7-8
+* Referred back to Java Spring Boot Lesson for explanations: https://git.generalassemb.ly/sureshmelvinsigera/Java-Spring-Boot-lecture/tree/spring-2-7-8
+* [JAVA API](https://docs.oracle.com/en/java/javase/17/docs/api/index.html)
+* [Spring Framework Documentation](https://docs.spring.io/spring-framework/docs/current/reference/html/)
 * Trevor Hendricks - for helping me understand Spring logic/ MVC setup and being patient with explaining concepts.
 * Kevin Barrios - for always helping me with my Github issues

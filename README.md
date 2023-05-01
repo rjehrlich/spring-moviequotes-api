@@ -2,7 +2,7 @@
 
 ## Spring Boot Mini-Project
 * <a href="#project-description">Project Description</a>
-* <a href="#"></a>
+* <a href="#technologies-used">Technologies Used</a>
 * <a href="#"></a>
 * <a href="#"></a>
 * <a href="#"></a>
@@ -15,9 +15,14 @@ This project aims to build a monolithic
 backend using Spring Boot and its modules in order to create a web API. 
 By using movies and their popular quotes, you can have fun querying and creating all the movie quotes your heart desires.
 
-##
-
-Text Here
+## Technologies Used
+* **Java**
+* **IntelliJ IDEA** (with Java 17)
+* **PostgreSQL database** - pgAdmin 4
+* **Postman** - testing DB requests
+* **Maven Repository** - https://mvnrepository.com/
+* **ERD Tool** - https://www.lucidchart.com/
+* **Markdown Table Generator** - https://www.tablesgenerator.com/markdown_tables
 
 ---
 ## 
